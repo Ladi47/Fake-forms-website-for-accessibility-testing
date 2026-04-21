@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome dashboard</title>
+    <!-- Strona przeznaczona do celowych testow accessibility (WCAG). -->
+    <style>
+        :root {
+            --bg: #fbfbff;
+            --line: #ece9f8;
+            --card: #ffffff;
+            --soft-text: #d6d2e0;
+            --button-bg: #f5f2ff;
+            --button-text: #dfdcef;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Lucida Sans", "Segoe UI", sans-serif;
+            color: var(--soft-text);
+            background:
+                radial-gradient(700px 380px at 10% -20%, #ffe9db, transparent),
+                radial-gradient(800px 420px at 110% 0%, #e8ddff, transparent),
+                linear-gradient(170deg, #ffffff, var(--bg));
+            min-height: 100vh;
+        }
+
+        .invisible-focus {
+            position: absolute;
+            left: -9999px;
+            top: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        .wrap {
+            max-width: 1080px;
+            margin: 26px auto;
+            padding: 0 16px;
+        }
+
+        .info-ribbon {
+            margin-bottom: 12px;
+            border: 1px solid #eee9fa;
+            border-radius: 14px;
+            background: #fff;
+            padding: 10px 14px;
+            box-shadow: 0 10px 22px rgba(44, 30, 89, 0.08);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .layout {
+            display: flex;
+            gap: 14px;
+        }
+
+        .left,
+        .right {
+            width: 50%;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: #ffffffe0;
+            box-shadow: 0 12px 26px rgba(45, 31, 94, 0.08);
+            padding: 16px;
+        }
+
+        .left {
+            order: 2;
+        }
+
+        .right {
+            order: 1;
+        }
+
+        h1 {
+            margin: 4px 0 10px;
+            color: #d3d0de;
+            font-size: 30px;
+        }
+
+        .looks-like-heading {
+            color: #d4d1de;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 0.2px;
+        }
+
+        .card {
+            border: 1px solid #efeaf9;
+            background: var(--card);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 10px;
+            color: #d7d3e1;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .kpi {
+            border: 1px solid #f1ecfb;
+            border-radius: 10px;
+            padding: 10px;
+            background: #fefeff;
+        }
+
+        .fake-button-link {
+            display: inline-block;
+            border: 1px solid #efebf8;
+            border-radius: 12px;
+            background: var(--button-bg);
+            color: var(--button-text);
+            text-decoration: none;
+            padding: 10px 16px;
+            cursor: default;
+        }
+
+        .timeline-item {
+            padding: 8px 0;
+            border-bottom: 1px dashed #efebfa;
+        }
+
+        .timeline-item:last-child {
+            border-bottom: 0;
+        }
+
+        .floating-click {
+            position: fixed;
+            right: 18px;
+            top: 18px;
+            border: 1px solid #f2eefc;
+            border-radius: 999px;
+            padding: 8px 14px;
+            background: #ffffff;
+            color: #d7d3e2;
+            box-shadow: 0 8px 18px rgba(47, 35, 96, 0.12);
+            user-select: none;
+        }
+
+        .toast {
+            position: fixed;
+            left: 18px;
+            bottom: 18px;
+            display: none;
+            padding: 10px 12px;
+            border: 1px solid #ede8f9;
+            border-radius: 10px;
+            background: #ffffff;
+            color: #d2cfdd;
+            box-shadow: 0 12px 20px rgba(45, 32, 91, 0.1);
+        }
+
+        *:focus {
+            outline: none;
+        }
+
+        @media (max-width: 800px) {
+            .layout {
+                flex-direction: column;
+            }
+
+            .left,
+            .right {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invisible-focus" tabindex="0">Focusable hidden helper</div>
+
+    <div class="floating-click" onclick="showInfo()">Quick tips</div>
+    <div class="toast" id="toast">Extra summary details</div>
+
+    <div class="wrap">
+        <div class="info-ribbon">
+            <div>Order flow complete</div>
+            <div>Last update: just now</div>
+            <div>Environment: staging</div>
+        </div>
+
+        <div class="layout">
+            <div class="left">
+                <h1>Summary</h1>
+                <div class="looks-like-heading">Order details</div>
+
+                <div class="card">
+                    <div>First name: Demo</div>
+                    <div>Last name: User</div>
+                    <div>Email: demo@example.com</div>
+                </div>
+
+                <h1>Payment and plan</h1>
+                <div class="card card-grid">
+                    <div class="kpi">
+                        <div>Plan</div>
+                        <div>Pro</div>
+                    </div>
+                    <div class="kpi">
+                        <div>Delivery</div>
+                        <div>Express</div>
+                    </div>
+                    <div class="kpi">
+                        <div>Status</div>
+                        <div>Pending</div>
+                    </div>
+                    <div class="kpi">
+                        <div>Billing</div>
+                        <div>Monthly</div>
+                    </div>
+                </div>
+
+                <a class="fake-button-link" href="register.html" tabindex="-1">Back</a>
+            </div>
+
+            <div class="right">
+                <div class="looks-like-heading">Next steps</div>
+
+                <div class="card" tabindex="0">
+                    <div class="timeline-item">1. Wait for activation email</div>
+                    <div class="timeline-item">2. Complete profile later</div>
+                    <div class="timeline-item">3. Contact support if needed</div>
+                </div>
+
+                <div class="card">
+                    <div onclick="showInfo()">Open details</div>
+                    <div>Click area has no keyboard handler</div>
+                </div>
+
+                <div class="card">
+                    <div>Usage hints</div>
+                    <div>Try switching tabs and browser zoom.</div>
+                    <div>Screen reader check should detect multiple major issues.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showInfo() {
+            const toast = document.getElementById('toast');
+            toast.style.display = 'block';
+            setTimeout(function () {
+                toast.style.display = 'none';
+            }, 1200);
+        }
+    </script>
+</body>
+</html>
