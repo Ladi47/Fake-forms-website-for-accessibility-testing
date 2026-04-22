@@ -5,179 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome dashboard</title>
     <!-- Strona przeznaczona do celowych testow accessibility (WCAG). -->
-    <style>
-        :root {
-            --bg: #fbfbff;
-            --line: #ece9f8;
-            --card: #ffffff;
-            --soft-text: #d6d2e0;
-            --button-bg: #f5f2ff;
-            --button-text: #dfdcef;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: "Lucida Sans", "Segoe UI", sans-serif;
-            color: var(--soft-text);
-            background:
-                radial-gradient(700px 380px at 10% -20%, #ffe9db, transparent),
-                radial-gradient(800px 420px at 110% 0%, #e8ddff, transparent),
-                linear-gradient(170deg, #ffffff, var(--bg));
-            min-height: 100vh;
-        }
-
-        .invisible-focus {
-            position: absolute;
-            left: -9999px;
-            top: -9999px;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-        }
-
-        .wrap {
-            max-width: 1080px;
-            margin: 26px auto;
-            padding: 0 16px;
-        }
-
-        .info-ribbon {
-            margin-bottom: 12px;
-            border: 1px solid #eee9fa;
-            border-radius: 14px;
-            background: #fff;
-            padding: 10px 14px;
-            box-shadow: 0 10px 22px rgba(44, 30, 89, 0.08);
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .layout {
-            display: flex;
-            gap: 14px;
-        }
-
-        .left,
-        .right {
-            width: 50%;
-            border: 1px solid var(--line);
-            border-radius: 16px;
-            background: #ffffffe0;
-            box-shadow: 0 12px 26px rgba(45, 31, 94, 0.08);
-            padding: 16px;
-        }
-
-        .left {
-            order: 2;
-        }
-
-        .right {
-            order: 1;
-        }
-
-        h1 {
-            margin: 4px 0 10px;
-            color: #d3d0de;
-            font-size: 30px;
-        }
-
-        .looks-like-heading {
-            color: #d4d1de;
-            font-size: 26px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: 0.2px;
-        }
-
-        .card {
-            border: 1px solid #efeaf9;
-            background: var(--card);
-            border-radius: 12px;
-            padding: 12px;
-            margin-bottom: 10px;
-            color: #d7d3e1;
-        }
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-        }
-
-        .kpi {
-            border: 1px solid #f1ecfb;
-            border-radius: 10px;
-            padding: 10px;
-            background: #fefeff;
-        }
-
-        .fake-button-link {
-            display: inline-block;
-            border: 1px solid #efebf8;
-            border-radius: 12px;
-            background: var(--button-bg);
-            color: var(--button-text);
-            text-decoration: none;
-            padding: 10px 16px;
-            cursor: default;
-        }
-
-        .timeline-item {
-            padding: 8px 0;
-            border-bottom: 1px dashed #efebfa;
-        }
-
-        .timeline-item:last-child {
-            border-bottom: 0;
-        }
-
-        .floating-click {
-            position: fixed;
-            right: 18px;
-            top: 18px;
-            border: 1px solid #f2eefc;
-            border-radius: 999px;
-            padding: 8px 14px;
-            background: #ffffff;
-            color: #d7d3e2;
-            box-shadow: 0 8px 18px rgba(47, 35, 96, 0.12);
-            user-select: none;
-        }
-
-        .toast {
-            position: fixed;
-            left: 18px;
-            bottom: 18px;
-            display: none;
-            padding: 10px 12px;
-            border: 1px solid #ede8f9;
-            border-radius: 10px;
-            background: #ffffff;
-            color: #d2cfdd;
-            box-shadow: 0 12px 20px rgba(45, 32, 91, 0.1);
-        }
-
-        *:focus {
-            outline: none;
-        }
-
-        @media (max-width: 800px) {
-            .layout {
-                flex-direction: column;
-            }
-
-            .left,
-            .right {
-                width: 100%;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="summary.css">
 </head>
 <body>
     <div class="invisible-focus" tabindex="0">Focusable hidden helper</div>
@@ -186,6 +14,15 @@
     <div class="toast" id="toast">Extra summary details</div>
 
     <div class="wrap">
+        <header style="margin-bottom: 20px;">
+            <img src="Capgemini_Primary%20logo.svg" alt="logo" class="logo">
+            <nav class="top-nav" style="display:flex; gap:10px; margin-top:12px;">
+                <a href="register.html" style="color:#95b8d1; text-decoration:none; background:#fff; border:1px solid #f2effc; border-radius:999px; padding:6px 13px; font-size:13px;">Register</a>
+                <a href="summary.html" style="color:#95b8d1; text-decoration:none; background:#fff; border:1px solid #f2effc; border-radius:999px; padding:6px 13px; font-size:13px;">Summary</a>
+                <a href="order.html" style="color:#95b8d1; text-decoration:none; background:#fff; border:1px solid #f2effc; border-radius:999px; padding:6px 13px; font-size:13px;">Order Equipment</a>
+            </nav>
+        </header>
+
         <div class="info-ribbon">
             <div>Order flow complete</div>
             <div>Last update: just now</div>
@@ -235,28 +72,73 @@
                     <div class="timeline-item">3. Contact support if needed</div>
                 </div>
 
-                <div class="card">
-                    <div onclick="showInfo()">Open details</div>
-                    <div>Click area has no keyboard handler</div>
+                <div class="looks-like-heading">Delivery tracking (Fake Table)</div>
+                <div class="fake-table-container">
+                    <!-- Bad table semantics: using divs visually styled as a table -> WCAG error -->
+                    <div class="fake-tr pseudo-th" style="display:flex; font-weight:bold; padding-bottom:8px; border-bottom:2px solid #ece9f8; margin-bottom:8px;">
+                        <div style="flex:1">Item</div>
+                        <div style="flex:1">Date</div>
+                        <div style="flex:1">Status</div>
+                    </div>
+                    <div class="fake-tr" style="display:flex; padding:6px 0; border-bottom:1px solid #f2effc;">
+                        <div class="fake-td" style="flex:1">Laptop</div>
+                        <div class="fake-td" style="flex:1">12/04/2026</div>
+                        <div class="fake-td" style="flex:1; color:green;">Dispatched</div>
+                    </div>
+                    <div class="fake-tr" style="display:flex; padding:6px 0; border-bottom:1px solid #f2effc;">
+                        <div class="fake-td" style="flex:1">Monitor</div>
+                        <div class="fake-td" style="flex:1">15/04/2026</div>
+                        <div class="fake-td" style="flex:1; color:orange;">Processing</div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top:15px;">
+                    <!-- Expanding block using only onclick, no aria-expanded or keyboard support -> WCAG error -->
+                    <div onclick="toggleDetails()" style="color:#00A4E4; cursor:pointer;" aria-hidden="true">
+                        ► Show secret diagnostic data (mouse click only)
+                    </div>
+                    <div id="secretDetails" style="display:none; margin-top:10px; font-size:12px; color:#aaa;">
+                        System ID: 981249823<br>
+                        Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9<br>
+                        Session: active
+                    </div>
                 </div>
 
                 <div class="card">
-                    <div>Usage hints</div>
-                    <div>Try switching tabs and browser zoom.</div>
-                    <div>Screen reader check should detect multiple major issues.</div>
+                    <div class="looks-like-heading" style="font-size: 16px;">Leave feedback</div>
+                    <!-- Form without labels, trapping keyboard, bad color contrast -> WCAG errors -->
+                    <input type="text" placeholder="Your name (optional)" style="width:100%; border:1px solid #ccc; padding:8px; border-radius:4px; margin-bottom:8px; color:#d6d2e0;">
+                    <textarea placeholder="Feedback" style="width:100%; border:1px solid #ccc; padding:8px; border-radius:4px; min-height:60px; color:#d6d2e0;"></textarea>
+                    <div class="fake-button-link" style="margin-top:8px; cursor:pointer; background:#ffffff; color:#eeeeee;" onclick="alert('Sent!')">Submit Feedback</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script>
-        function showInfo() {
-            const toast = document.getElementById('toast');
-            toast.style.display = 'block';
-            setTimeout(function () {
-                toast.style.display = 'none';
-            }, 1200);
-        }
-    </script>
+    <!-- Quick Tips Modal -> WCAG popup nightmare -->
+    <div class="quick-tips-btn" onclick="document.getElementById('quick-tips-modal').style.display='block'">💡 Quick Tips</div>
+
+    <div id="quick-tips-modal" class="qt-modal" style="display:none;">
+        <div class="qt-content">
+            <span class="qt-close" onclick="document.getElementById('quick-tips-modal').style.display='none'">&times;</span>
+            <ul style="list-style-type: none; padding-left: 0; margin-top: 10px;">
+                <li>Step 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>Step 2: Pellentesque habitant morbi tristique senectus et netus et malesuada fames.</li>
+                <li>Step 3: Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</li>
+                <li>Step 4: Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</li>
+                <li>Step 5: Nullam quis risus eget urna mollis ornare vel eu leo.</li>
+                <li>Step 6: 6666666666666666666666666666666666666666666666666666666666666666666666666</li>
+                <li>Step 7: 7777777777777777777777777777777777777777777777777777777777777777777777777</li>
+                <li>Step 8: Cum sociis natoque penatibus et magnis dis parturient montes.</li>
+                <li>Step 9: Cras mattis consectetur purus sit amet fermentum.</li>
+                <li>Step 10: Maecenas faucibus mollis interdum. Nulla vitae elit libero.</li>
+                <li>Step 11: Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</li>
+                <li>Step 12: Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</li>
+                <li>Step 13: Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="summary.js"></script>
 </body>
 </html>

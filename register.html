@@ -3,246 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign up - Orbit Market</title>
+    <title>Capgemini Onboarding</title>
     <!-- Strona przeznaczona do celowych testow accessibility (WCAG). -->
-    <style>
-        :root {
-            --paper: #fcfcff;
-            --line: #ece7ff;
-            --card: #ffffffd9;
-            --muted: #cbc7d8;
-            --soft-text: #d6d3df;
-            --action-bg: #f3f0ff;
-            --action-text: #dfdcef;
-            --accent-a: #ffe2d5;
-            --accent-b: #e8dcff;
-            --accent-c: #d8f0ff;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
-            background:
-                radial-gradient(700px 400px at -10% -15%, var(--accent-b), transparent),
-                radial-gradient(900px 500px at 120% 10%, var(--accent-c), transparent),
-                linear-gradient(145deg, #ffffff, var(--paper));
-            color: var(--soft-text);
-            min-height: 100vh;
-        }
-
-        .shell {
-            max-width: 980px;
-            margin: 28px auto;
-            padding: 0 18px;
-            display: grid;
-            gap: 16px;
-        }
-
-        .panel {
-            backdrop-filter: blur(4px);
-            background: var(--card);
-            border: 1px solid var(--line);
-            border-radius: 18px;
-            box-shadow: 0 14px 32px rgba(40, 27, 93, 0.06);
-            padding: 20px;
-        }
-
-        .top-nav {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-
-        .top-nav a {
-            color: var(--muted);
-            text-decoration: none;
-            background: #ffffff;
-            border: 1px solid #f2effc;
-            border-radius: 999px;
-            padding: 6px 13px;
-            font-size: 13px;
-        }
-
-        h1 {
-            margin: 6px 0 2px;
-            color: #d2cedf;
-            font-size: 34px;
-            letter-spacing: 0.2px;
-        }
-
-        h4 {
-            margin: 0;
-            color: #d5d1e2;
-            font-weight: 400;
-            letter-spacing: 0.6px;
-            text-transform: uppercase;
-            font-size: 12px;
-        }
-
-        h2 {
-            margin: 12px 0 0;
-            color: #d3d0df;
-            font-size: 21px;
-        }
-
-        .progress {
-            margin-top: 12px;
-            height: 10px;
-            border-radius: 999px;
-            background: #f6f4fd;
-            overflow: hidden;
-            border: 1px solid #f0ecfd;
-        }
-
-        .progress > span {
-            display: block;
-            width: 48%;
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
-            transition: width 300ms ease;
-        }
-
-        .hero-note {
-            margin-top: 12px;
-            padding: 10px 12px;
-            border: 1px dashed #f0ebfd;
-            border-radius: 10px;
-            background: #fffdfa;
-            color: #d8d4df;
-            font-size: 13px;
-        }
-
-        form {
-            display: grid;
-            gap: 12px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        .row {
-            display: grid;
-            gap: 6px;
-        }
-
-        .row label,
-        .row span,
-        .inline-note {
-            color: #d5d1e0;
-            font-size: 13px;
-        }
-
-        .row input,
-        .row select {
-            border: 1px solid #ece7f5;
-            border-radius: 11px;
-            padding: 10px 12px;
-            background: #ffffff;
-            color: #dad7e2;
-            font-size: 14px;
-        }
-
-        .error-visual {
-            border-color: #f8caca !important;
-            background: #fff8f8;
-        }
-
-        .choices {
-            display: flex;
-            gap: 14px;
-            color: #d7d4df;
-        }
-
-        .fake-btn,
-        .submit-input {
-            display: inline-block;
-            width: fit-content;
-            border-radius: 12px;
-            border: 1px solid #efecfb;
-            background: var(--action-bg);
-            color: var(--action-text);
-            padding: 11px 16px;
-            cursor: pointer;
-            user-select: none;
-            transition: transform 160ms ease;
-            text-align: center;
-        }
-
-        .fake-btn:hover,
-        .submit-input:hover {
-            transform: translateY(-1px);
-        }
-
-        .form-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .inline-note {
-            color: #cdc8da;
-            font-size: 12px;
-        }
-
-        .toast {
-            position: fixed;
-            right: 16px;
-            bottom: 16px;
-            background: #ffffff;
-            border: 1px solid #efeafa;
-            border-radius: 10px;
-            padding: 10px 12px;
-            color: #d0ccdc;
-            box-shadow: 0 10px 18px rgba(53, 40, 92, 0.1);
-            display: none;
-        }
-
-        *:focus {
-            outline: none;
-            box-shadow: none;
-        }
-
-        @media (max-width: 760px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-
-            h1 {
-                font-size: 29px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="register.css">
 </head>
 <body>
     <div class="shell">
         <header class="panel">
+            <img src="Capgemini_Primary%20logo.svg" alt="logo" class="logo">
             <nav class="top-nav">
                 <a href="register.html">Register</a>
                 <a href="summary.html">Summary</a>
+                <a href="order.html">Order Equipment</a>
             </nav>
 
-            <h1>Orbit Market onboarding</h1>
-            <h4>Checkout step 1 / customer profile</h4>
-            <h2>Set up account and shipping preferences</h2>
+            <h1>Capgemini onboarding</h1>
+            <h4>Checkout step 1 / resource profile</h4>
+            <h2>Set up your new workspace</h2>
 
             <div class="progress"><span id="progressFill"></span></div>
-            <div class="hero-note">Quick setup takes less than 2 minutes and unlocks member pricing.</div>
+            <div class="hero-note" style="color: #cce9f7; background: #0070AD;">Quick setup takes less than 2 minutes. <!-- Low contrast text! --></div>
         </header>
 
         <main class="panel">
             <form id="registerForm" novalidate>
                 <div class="grid">
                     <div class="row">
-                        <label>First name</label>
+                        <label>First name</label>  <!-- No 'for' attribute -> WCAG error -->
                         <input type="text" name="firstName" placeholder="First name" required tabindex="4">
                     </div>
 
@@ -252,6 +39,7 @@
                     </div>
 
                     <div class="row">
+                        <!-- Missing label entirely -> WCAG error -->
                         <input type="email" name="email" placeholder="Email address" required tabindex="6">
                     </div>
 
@@ -261,13 +49,47 @@
                     </div>
 
                     <div class="row">
-                        <label>Repeat password</label>
+                        <label>Repeat password</label> <!-- No 'for' -> WCAG error -->
                         <input type="password" name="repeatPassword" required tabindex="3">
                     </div>
 
-                    <div class="row" aria-hidden="true">
+                    <div class="row" aria-hidden="true"> <!-- Field is hidden from screen readers but focusable -> WCAG error -->
                         <label for="companyName">Company name (optional)</label>
                         <input type="text" id="companyName" name="companyName" tabindex="5">
+                    </div>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid var(--line); margin: 10px 0;">
+
+                <div class="grid">
+                    <div class="row">
+                        <div class="looks-like-label" style="font-size:13px; color:#cddff0;">Phone Number</div> <!-- Fake label -> WCAG error -->
+                        <input type="text" name="phone" placeholder="+48..." tabindex="7">
+                    </div>
+
+                    <div class="row">
+                        <label>Birth Date</label> <!-- No 'for' -> WCAG error -->
+                        <input type="text" name="dob" placeholder="DD/MM/YYYY" tabindex="99"> <!-- Wrong input type, disconnected tabindex -> WCAG error -->
+                    </div>
+
+                    <div class="row">
+                        <!-- Missing label entirely -> WCAG error -->
+                        <select name="country" tabindex="-1"> <!-- Negative tabindex traps keyboard users -> WCAG error -->
+                            <option value="">Select Region</option>
+                            <option value="pl">Poland</option>
+                            <option value="us">United States</option>
+                            <option value="in">India</option>
+                        </select>
+                    </div>
+
+                    <div class="row">
+                        <span>Role</span>
+                        <div class="choices">
+                            <!-- Radios not grouped in fieldset/legend -> WCAG error -->
+                            <label><input type="radio" name="role" value="dev"> Dev</label>
+                            <label><input type="radio" name="role" value="qa"> QA</label>
+                            <label><input type="radio" name="role" value="pm"> PM</label>
+                        </div>
                     </div>
                 </div>
 
@@ -292,9 +114,15 @@
                 <div class="row">
                     <label>
                         <input type="checkbox" name="consent" required tabindex="10">
-                        I agree to terms
+                        I agree to <a href="#" style="color:var(--accent-a)">Click here</a> <!-- Non descriptive link -> WCAG error -->
                     </label>
                     <div class="inline-note">Required field</div>
+                </div>
+                
+                <div class="row">
+                    <div style="cursor:pointer; display:inline-block; border:1px solid #ccc; padding:5px; background:#fff;" onclick="this.style.background='green'">
+                       Simulated Custom Checkbox <!-- Not focusable, no ARIA role -> WCAG error -->
+                    </div>
                 </div>
 
                 <div class="form-footer">
@@ -307,69 +135,39 @@
 
     <div class="toast" id="fakeToast">Form looks good. Redirecting...</div>
 
-    <script>
-        function openTerms() {
-            const toast = document.getElementById('fakeToast');
-            toast.textContent = 'Terms preview placeholder';
-            toast.style.display = 'block';
-            setTimeout(function () {
-                toast.style.display = 'none';
-            }, 1200);
-        }
+    <div class="modal-overlay" id="termsModal">
+        <div class="modal-content">
+            <h3>Terms and Conditions</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.</p>
+            <p>Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere. Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet.</p>
+            <button class="modal-close" onclick="closeTerms()" tabindex="12">Close</button> <!-- Bad focus flow/accessibility on modal -> WCAG error -->
+        </div>
+    </div>
 
-        const form = document.getElementById('registerForm');
-        const progress = document.getElementById('progressFill');
-        const trackedFields = form.querySelectorAll('input, select');
+    <!-- Quick Tips Modal -> WCAG popup nightmare -->
+    <div class="quick-tips-btn" onclick="document.getElementById('quick-tips-modal').style.display='block'">💡 Quick Tips</div>
 
-        trackedFields.forEach(function (field) {
-            field.addEventListener('input', updateProgress);
-            field.addEventListener('change', updateProgress);
-        });
+    <div id="quick-tips-modal" class="qt-modal" style="display:none;">
+        <div class="qt-content">
+            <span class="qt-close" onclick="document.getElementById('quick-tips-modal').style.display='none'">&times;</span>
+            <ul style="list-style-type: none; padding-left: 0; margin-top: 10px;">
+                <li>Step 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>Step 2: Pellentesque habitant morbi tristique senectus et netus et malesuada fames.</li>
+                <li>Step 3: Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</li>
+                <li>Step 4: Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</li>
+                <li>Step 5: Nullam quis risus eget urna mollis ornare vel eu leo.</li>
+                <li>Step 6: 6666666666666666666666666666666666666666666666666666666666666666666666666</li>
+                <li>Step 7: 7777777777777777777777777777777777777777777777777777777777777777777777777</li>
+                <li>Step 8: Cum sociis natoque penatibus et magnis dis parturient montes.</li>
+                <li>Step 9: Cras mattis consectetur purus sit amet fermentum.</li>
+                <li>Step 10: Maecenas faucibus mollis interdum. Nulla vitae elit libero.</li>
+                <li>Step 11: Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</li>
+                <li>Step 12: Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</li>
+                <li>Step 13: Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
+            </ul>
+        </div>
+    </div>
 
-        function updateProgress() {
-            let filled = 0;
-            trackedFields.forEach(function (field) {
-                if (field.type === 'radio' || field.type === 'checkbox') {
-                    if (field.checked) {
-                        filled += 1;
-                    }
-                } else if (field.value.trim() !== '') {
-                    filled += 1;
-                }
-            });
-
-            const width = Math.min(100, Math.round((filled / trackedFields.length) * 100));
-            progress.style.width = width + '%';
-        }
-
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            const email = this.querySelector('input[name="email"]');
-            const pass = this.querySelector('input[name="password"]');
-            const repeat = this.querySelector('input[name="repeatPassword"]');
-            const toast = document.getElementById('fakeToast');
-
-            email.classList.remove('error-visual');
-            pass.classList.remove('error-visual');
-            repeat.classList.remove('error-visual');
-
-            if (!email.value.includes('@')) {
-                email.classList.add('error-visual');
-            }
-
-            if (pass.value !== repeat.value) {
-                pass.classList.add('error-visual');
-                repeat.classList.add('error-visual');
-            }
-
-            toast.textContent = 'Submitting fake data...';
-            toast.style.display = 'block';
-
-            setTimeout(function () {
-                window.location.href = 'summary.html';
-            }, 550);
-        });
-    </script>
+    <script src="register.js"></script>
 </body>
 </html>

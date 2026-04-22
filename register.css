@@ -1,0 +1,338 @@
+:root {
+    --paper: #f0f6fa;
+    --line: #cddff0;
+    --card: #ffffffd9;
+    --muted: #95b8d1;
+    --soft-text: #3c5e79; /* slightly too light for some backgrounds -> WCAG contrast */
+    --action-bg: #0070AD; /* Capgemini Blue */
+    --action-text: #304e63; /* Very bad contrast -> WCAG error */
+    --accent-a: #00A4E4; /* Capgemini Cyan */
+    --accent-b: #bfe5f9;
+    --accent-c: #8ed0f4;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    background:
+        radial-gradient(900px 700px at 0% 0%, #e1d5ff 0%, transparent 80%),
+        radial-gradient(1200px 800px at 100% 15%, #c8e8ff 0%, transparent 70%),
+        radial-gradient(800px 500px at 50% 100%, #f4ebff 0%, transparent 80%),
+        linear-gradient(145deg, #ffffff, #edf4fb);
+    color: var(--soft-text);
+    min-height: 100vh;
+}
+
+.shell {
+    max-width: 980px;
+    margin: 28px auto;
+    padding: 0 18px;
+    display: grid;
+    gap: 16px;
+}
+
+.panel {
+    backdrop-filter: blur(4px);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: 0 20px 48px rgba(0, 32, 64, 0.16);
+    padding: 20px;
+}
+
+.top-nav {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.top-nav a {
+    color: var(--muted);
+    text-decoration: none;
+    background: #ffffff;
+    border: 1px solid #f2effc;
+    border-radius: 999px;
+    padding: 6px 13px;
+    font-size: 13px;
+}
+
+h1 {
+    margin: 6px 0 2px;
+    color: #d2cedf;
+    font-size: 34px;
+    letter-spacing: 0.2px;
+}
+
+h4 {
+    margin: 0;
+    color: #d5d1e2;
+    font-weight: 400;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+h2 {
+    margin: 12px 0 0;
+    color: #d3d0df;
+    font-size: 21px;
+}
+
+.progress {
+    margin-top: 12px;
+    height: 10px;
+    border-radius: 999px;
+    background: #f6f4fd;
+    overflow: hidden;
+    border: 1px solid #f0ecfd;
+}
+
+.progress > span {
+    display: block;
+    width: 48%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+    transition: width 300ms ease;
+}
+
+.hero-note {
+    margin-top: 12px;
+    padding: 10px 12px;
+    border: 1px dashed #f0ebfd;
+    border-radius: 10px;
+    background: #fffdfa;
+    color: #d8d4df;
+    font-size: 13px;
+}
+
+form {
+    display: grid;
+    gap: 12px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.row {
+    display: grid;
+    gap: 6px;
+}
+
+.row label,
+.row span,
+.inline-note {
+    color: #d5d1e0;
+    font-size: 13px;
+}
+
+.row input,
+.row select {
+    border: 1px solid #ece7f5;
+    border-radius: 11px;
+    padding: 10px 12px;
+    background: #ffffff;
+    color: #dad7e2;
+    font-size: 14px;
+}
+
+.error-visual {
+    border-color: #f8caca !important;
+    background: #fff8f8;
+}
+
+.choices {
+    display: flex;
+    gap: 14px;
+    color: #d7d4df;
+}
+
+.fake-btn,
+.submit-input {
+    display: inline-block;
+    width: fit-content;
+    border-radius: 12px;
+    border: 1px solid #efecfb;
+    background: var(--action-bg);
+    color: var(--action-text);
+    padding: 11px 16px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 160ms ease;
+    text-align: center;
+}
+
+.fake-btn:hover,
+.submit-input:hover {
+    transform: translateY(-1px);
+}
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.inline-note {
+    color: #cdc8da;
+    font-size: 12px;
+}
+
+.toast {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    background: #ffffff;
+    border: 1px solid #efeafa;
+    border-radius: 10px;
+    padding: 10px 12px;
+    color: #d0ccdc;
+    box-shadow: 0 16px 32px rgba(0, 32, 64, 0.18);
+    display: none;
+}
+
+.logo {
+    height: 75px;
+    max-width: 100%;
+    margin-bottom: 25px;
+}
+
+*:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+@media (max-width: 760px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+    
+    .shell {
+        margin: 10px auto;
+        padding: 0 10px;
+    }
+    
+    .choices {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .form-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .form-footer .fake-btn, 
+    .form-footer .submit-input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 20, 40, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #ffffff;
+    padding: 24px 32px;
+    border-radius: 16px;
+    max-width: 540px;
+    width: 90%;
+    box-shadow: 0 24px 60px rgba(0, 32, 64, 0.3);
+    color: var(--soft-text);
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    color: var(--action-bg);
+}
+
+.modal-close {
+    margin-top: 16px;
+    padding: 10px 20px;
+    background: var(--action-bg);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.modal-close:hover {
+    opacity: 0.9;
+}
+
+/* Quick Tips styles */
+.quick-tips-btn {
+    position: fixed;
+    bottom: 20px;
+    right: -20px;
+    background: #0070AD;
+    color: #304e63; /* Very bad contrast -> WCAG Error */
+    padding: 15px 35px 15px 15px;
+    border-radius: 8px 0 0 8px;
+    cursor: pointer;
+    box-shadow: -2px 2px 10px rgba(0,0,0,0.2);
+    font-weight: bold;
+    z-index: 1000;
+}
+
+.qt-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    max-width: 90vw;
+    background: #ffffff;
+    border: 3px solid #bfe5f9;
+    border-radius: 0; /* Boxy */
+    z-index: 2000;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    padding: 30px;
+    color: #acc8d4; /* Super light text -> WCAG Error */
+    font-size: 14px; /* Text larger but still terrible contrast */
+    max-height: 80vh;
+    overflow-y: scroll; /* Tab trap risk if focused */
+}
+
+.qt-close {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    color: #d1e7f0; /* Invisible almost -> WCAG Error */
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.qt-modal li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+    border-bottom: 1px dotted #eee;
+    padding-bottom: 5px;
+    word-wrap: break-word;
+    word-break: break-all; /* Prevents long 6666 strings from overflowing */
+}
+
