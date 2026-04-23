@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- BŁĄD WCAG: Zdeklarowany język to angielski, podczas gdy treść jest w języku polskim. Czytniki ekranu będą czytać tekst z angielskim akcentem. -->
+<head>
+    <!-- BŁĄD WCAG: Atrybut user-scalable=no oraz maximum-scale uniemożliwiają powiększenie strony osobom niedowidzącym (WCAG 1.4.4 Resize Text). -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <!-- BŁĄD WCAG: Tytuł nie wskazuje precyzyjnie lub unikalnie celu strony, a często zostaje nieczytelny. -->
+    <title>Strona</title> 
+    <link rel="stylesheet" href="complaint.css">
+    <!-- BŁĄD WCAG: Brak włączenia w standardzie do plików <main> , <form>, <nav> - "zupa divów" z pominięciem punktów orierntacyjnych -->
+</head>
+<body style="background-color: white;">
+    
+    <!-- BŁĄD WCAG 2.4.6: "fałszywy nagłówek" - duży i pogrubiony tekst wewnątrz <div>, który wizualnie wygląda jak <h1>, ale bez semantyki. -->
+    <div style="font-size: 32px; font-weight: bold; margin-bottom: 20px;">System Zgłoszeniowy usterki w środowisku informatycznym</div>
+    
+    <!-- BŁĄD WCAG 1.3.1: Przeskok w hierarchii nagłówków. Skok od razu do <h5> (brak h1-h4) psuje strukturę konspektu czytnika ekranu. -->
+    <h5>Krok 1 informacji dla administracji:</h5>
+
+    <div class="terrible-container">
+        
+        <!-- BŁĄD WCAG 4.1.2 i 1.3.1: Brak powiązanej etykiety <label for="..."> z inputem. Użytkownik niewidomy nie wie, do czego służy to pole. -->
+        <!-- BŁĄD WCAG 4.1.2: aria-hidden="true" ukrywa ów istotny input całkowicie przed czytnikiem ekranu, chociaż jest fokusowalny! -->
+        <span id="id-desc" class="low-contrast">Wymagany Identyfikator Pracownika:</span><br>
+        <input type="text" tabindex="3" aria-hidden="true" title="Identyfikator" class="bad-input" placeholder="Wpisz nr"> 
+        <!-- BŁĄD WCAG 2.4.3: Skakanie wartością `tabindex` w dziwnej kolejności. -->
+
+        <br><br>
+        
+        <!-- BŁĄD WCAG 3.3.2: Etykieta to wyłącznie pole `placeholder`, które ginie po wpisaniu tekstu (co łamie wytyczne odnośnie stałej widoczności). -->
+        <!-- BŁĄD WCAG 1.4.3: Niski kontrast koloru zadeklarowany stylem inline (bardzo jasny szary #d3d3d3 na białym). -->
+        <input type="text" id="desc" tabindex="1" aria-label=" " class="bad-input desc-input" placeholder="Opisz swój problem (Znikanie opisu!)" style="color:#e0e0e0;">
+
+        <br><br>
+
+        <div class="low-contrast" id="radio-group-fake">Wybierz priorytet:</div>
+        <!-- BŁĄD WCAG 4.1.1: Duplikowanie atrybutu `id` ("bad-radio"). Walidatory i niektóre AT mogą zwariować. -->
+        <!-- BŁĄD WCAG 1.3.1: Brak tagów <fieldset> i <legend>, żeby powiązać logicznie radiobuttony w grupę z pytaniem powuyżej. -->
+        <input type="radio" tabindex="4" name="priority" id="bad-radio" value="wysoki"> Wysoki 
+        <input type="radio" tabindex="2" name="priority" id="bad-radio" value="niski"> Niski 
+
+        <br><br>
+        
+        <!-- BŁĄD WCAG 4.1.2 & 2.1.1: Używamy generycznego diva jako przycisku.
+             Nie posiada on `role="button"`, ani `tabindex="0"`, a w Javascript użyto tylko `onclick`. 
+             Użytkownik uzywający samej klawiatury (Tab, Enter, Spacja) nie może go uaktywnić by na niego przejść jeśli nie dodaliśmy np. indexu=5, co psuje naturalny porządek dokumentu. -->
+        <div class="fake-button" tabindex="5" onclick="submitComplaint()">Wyślij raport (Kliknij myszą!)</div>
+
+        <br><br>
+
+        <span class="low-contrast">Naciśnij tabulator by zaznaczyć poniżej, aby nie utracić danych!</span><br>
+        <!-- BŁĄD WCAG 2.1.2: Znana pułapka klawiaturowa (Keyboard trap).
+             Po wejściu tabulatorem na ten input klawisz 'Tab' jest przechwytywany przez skrypt ('e.preventDefault()').
+             Zablokowany użytkownik bez myszki nie wyjdzie już nigdzie indziej! -->
+        <input type="text" id="trap" class="bad-input" value="Ucieknij stąd" onkeydown="trapFocus(event)">
+
+        <br><br><br>
+
+        <!-- BŁĄD WCAG 2.4.4: Bardzo słaby i niejasny tekst linku. 
+             Słowo "Tutaj" wyrwane z kontekstu nic nie mówi (np. osobom korzystających ze spisu linków). -->
+        <a href="register.html" class="back-link">Tutaj</a> - aby powrócić.
+
+        <!-- BŁĄD WCAG 1.4.3 & 1.4.4 & 2.4.7: Awaryjny guzik, który jest zbyt mały, z tekstem niemożliwym do odczytania, pozbawiony focusu. -->
+        <button tabindex="-1" aria-hidden="true" class="emergency-escape" onclick="window.location.href='register.html'" title="Przycisk ucieczki">SOS</button>
+    </div>
+
+    <br><br>
+    
+    <!-- BŁĄD WCAG 1.1.1: Tekst alternatywny na obrazku nie opisuje wcale obrazka, to po prostu fałszywa nazwa pliku. -->
+    <img src="Capgemini_Primary%20logo.svg" alt="plik_logo2.png">
+    
+    <!-- Timer symulujący utratę kontroli przez uzytkownika nad czasem -->
+    <div id="timer-alert" style="color:red; font-weight:bold; margin-top:30px;">Po 30 sekundach formularz wygaśnie!</div>
+
+    <script src="complaint.js"></script>
+</body>
+</html>

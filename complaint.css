@@ -1,0 +1,64 @@
+/* BŁĄD WCAG 1.4.3: Niski Kontrast - Jasny szary tekst na białym tle */
+.low-contrast {
+    color: #aeaeae;
+}
+
+/* BŁĄD WCAG 2.4.7: Focus Visible - Całkowity brak widocznego focusu (outline: none) dla WSZYSTKICH elementów! 
+   Osoby używające samej klawiatury zgubią się na stronie. */
+*:focus {
+    outline: none !important;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #aeaeae; /* Domyślnie zły kontrast wszędzie */
+    line-height: 0.9; /* BŁĄD WCAG 1.4.12: Zbyt małe odstępy między wierszami tekstu, tekst się na siebie zamazuje */
+}
+
+/* BŁĄD WCAG 1.4.1: Color is used as the only visual means of conveying information. 
+   Link powrotu nie jest podkreślony, różni się tylko w miarę mało widocznym kolorem niebieskim. */
+.back-link {
+    color: #4a90e2;
+    text-decoration: none; 
+}
+
+.terrible-container {
+    margin: 20px;
+}
+
+.bad-input {
+    border: 1px dotted #ccc; /* Niewidoczne granice formularzy */
+    background-color: #fff;
+    padding: 2px;
+}
+
+/* BŁĄD WCAG 1.4.4: Resize text. Po powiększeniu np. w przeglądarce 200% tekst przestanie się mieścić, 
+   ponieważ wysokość inputu jest zablokowana "na sztywno" i tekst zostanie ucięty */
+.desc-input {
+    width: 250px;
+    height: 12px; 
+    font-size: 10px;
+}
+
+/* BŁĄD WCAG 1.4.3 Zły Kontrast Przycisk - Czerwony na różowym - Bardzo mała klikalna powierzchnia - brak role=button wg HTML */
+.fake-button {
+    background-color: #ffcccc;
+    color: #ff0000;
+    display: inline-block;
+    padding: 3px 5px; 
+    cursor: default; /* BŁĄD WCAG: kursor nie wskazuje przycisku */
+}
+
+/* Przycisk awaryjny - Edge case WCAG 1.4.3 (Kontrast), 2.5.5 (Zbyt mały cel dotykowy), 1.4.4 (Zmiana rozmiaru). Guzik nie do wciśnięcia przez osobę z wadą wzroku lub motoryki */
+.emergency-escape {
+    position: fixed;
+    right: 3px;
+    bottom: 3px; /* Ukryty na samym rogu ekranu */
+    width: 6px;
+    height: 6px; /* Guzik mikroskopijny - WCAG Target Size fail! */
+    font-size: 1px; /* 1px czcionka to dramat */
+    color: darkred; 
+    background-color: red; /* Ciemnoczerwony na bordowym */
+    border: none;
+    cursor: wait; /* Pokazuje "klepsydrę", sugerując zawieszenie akcji */
+}
