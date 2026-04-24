@@ -65,17 +65,17 @@
                 <div class="grid">
                     <div class="row">
                         <div class="looks-like-label" style="font-size:13px; color:#cddff0;">Phone Number</div> <!-- Fake label -> WCAG error -->
-                        <input type="text" name="phone" placeholder="+48..." tabindex="7">
+                        <input type="text" name="phone" placeholder="+48..." tabindex="7" required>
                     </div>
 
                     <div class="row">
                         <label>Birth Date</label> <!-- No 'for' -> WCAG error -->
-                        <input type="text" name="dob" placeholder="DD/MM/YYYY" tabindex="99"> <!-- Wrong input type, disconnected tabindex -> WCAG error -->
+                        <input type="text" name="dob" placeholder="DD/MM/YYYY" tabindex="99" required> <!-- Wrong input type, disconnected tabindex -> WCAG error -->
                     </div>
 
                     <div class="row">
                         <!-- Missing label entirely -> WCAG error -->
-                        <select name="country" tabindex="-1"> <!-- Negative tabindex traps keyboard users -> WCAG error -->
+                        <select name="country" tabindex="-1" required> <!-- Negative tabindex traps keyboard users -> WCAG error -->
                             <option value="">Select Region</option>
                             <option value="pl">Poland</option>
                             <option value="us">United States</option>
@@ -87,16 +87,16 @@
                         <span>Role</span>
                         <div class="choices">
                             <!-- Radios not grouped in fieldset/legend -> WCAG error -->
-                            <label><input type="radio" name="role" value="dev"> Dev</label>
-                            <label><input type="radio" name="role" value="qa"> QA</label>
-                            <label><input type="radio" name="role" value="pm"> PM</label>
+                            <label><input type="radio" name="role" value="dev" required> Dev</label>
+                            <label><input type="radio" name="role" value="qa" required> QA</label>
+                            <label><input type="radio" name="role" value="pm" required> PM</label>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <label>Plan</label>
-                    <select name="plan" tabindex="8">
+                    <select name="plan" tabindex="8" required>
                         <option value="">Choose option</option>
                         <option value="basic">Basic</option>
                         <option value="pro">Pro</option>
@@ -107,15 +107,15 @@
                 <div class="row">
                     <span>Delivery speed</span>
                     <div class="choices">
-                        <label><input type="radio" name="speed" value="normal" tabindex="-1"> Normal</label>
-                        <label><input type="radio" name="speed" value="express" tabindex="9"> Express</label>
+                        <label><input type="radio" name="speed" value="normal" tabindex="-1" required> Normal</label>
+                        <label><input type="radio" name="speed" value="express" tabindex="9" required> Express</label>
                     </div>
                 </div>
 
                 <div class="row">
                     <label>
                         <input type="checkbox" name="consent" required tabindex="10">
-                        I agree to <a href="#" style="color:var(--accent-a)">Click here</a> <!-- Non descriptive link -> WCAG error -->
+                        I agree to <a href="https://www.capgemini.com/" style="color:var(--accent-a)" target="_blank">Click here</a> <!-- Non descriptive link -> WCAG error -->
                     </label>
                     <div class="inline-note">Required field</div>
                 </div>

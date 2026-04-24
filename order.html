@@ -41,7 +41,7 @@
 
                     <!-- Placeholder acts as label, missing formal label -> WCAG Error -->
                     <div class="row">
-                        <input type="text" name="shipping" placeholder="Shipping Address">
+                        <input type="text" name="shipping" placeholder="Shipping Address" required>
                     </div>
 
                     <!-- Textarea resizing blocked, contrast extremely low -> WCAG Error -->
@@ -53,12 +53,12 @@
                     <div class="row full-width">
                         <div class="fake-label">Detailed explanation (at least 200 words)</div>
                         <!-- Inputs with no label, no description, and poor contrast -->
-                        <textarea style="resize:none; color:#ddd; background:#fff; border:1px solid #eee; height: 120px;" tabindex="-1"></textarea>
+                        <textarea style="resize:none; color:#ddd; background:#fff; border:1px solid #eee; height: 120px;" tabindex="-1" required></textarea>
                     </div>
 
                     <div class="row">
                         <div class="fake-label">Current Device Serial Number</div>
-                        <input type="text" placeholder="e.g. SN-123456" style="border: 2px solid green;"> <!-- Using color alone to signify 'valid' state -> WCAG Error -->
+                        <input type="text" placeholder="e.g. SN-123456" style="border: 2px solid green;" required> <!-- Using color alone to signify 'valid' state -> WCAG Error -->
                     </div>
 
                     <div class="row">
@@ -73,7 +73,7 @@
                 <div class="chk-container" style="color: #6a8ea8; font-size: 13px;">
                     <!-- Checkboxes built incorrectly without native labels -->
                     <div class="chk-row" style="margin-bottom: 8px;">
-                        <input type="checkbox" id="chk1" value="policy1"> 
+                        <input type="checkbox" id="chk1" value="policy1" required> 
                         <span onclick="document.getElementById('chk1').checked = !document.getElementById('chk1').checked" style="cursor:pointer;">I have read the corporate hardware policy.</span>
                     </div>
                     <div class="chk-row" style="margin-bottom: 8px;">

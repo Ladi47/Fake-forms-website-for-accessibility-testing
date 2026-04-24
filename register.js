@@ -39,6 +39,31 @@ form.addEventListener('submit', function (event) {
     const repeat = this.querySelector('input[name="repeatPassword"]');
     const toast = document.getElementById('fakeToast');
 
+    let hasError = false;
+    const requiredFields = this.querySelectorAll('[required]');
+
+    requiredFields.forEach(function(field) {
+        field.classList.remove('error-visual');
+        field.style.backgroundColor = '';
+        if (field.type === 'checkbox' || field.type === 'radio') {
+            if (!field.checked) {
+                field.style.backgroundColor = '#ffcccc'; // Only color change -> WCAG Error
+                hasError = true;
+            }
+        } else if (field.value.trim() === '') {
+            field.classList.add('error-visual'); // No aria-invalid, no descriptive message -> WCAG Error
+            hasError = true;
+        }
+    });
+
+    if (hasError) {
+        toast.textContent = 'Oops! Something is wrong.'; // Unhelpful error message -> WCAG Error
+        toast.style.display = 'block';
+        toast.style.background = 'red';
+        setTimeout(() => toast.style.display = 'none', 3000);
+        return;
+    }
+
     email.classList.remove('error-visual');
     pass.classList.remove('error-visual');
     repeat.classList.remove('error-visual');
